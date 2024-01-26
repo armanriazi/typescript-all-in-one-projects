@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("./partials/head.ejs")%>
+  <body>
+    <%- include("./partials/nav.ejs")%> <% if (savedusers.length > 0){
+    savedusers.forEach(user=>{%>
+    <h3 class="amountOfItemsInCart"><%= user.amountOfItemsInCart %></h3>
+    <p class="total"><%=user.total %>$</p>
+    <p>-------------------------------------</p>
+    <%})}else{%>
+    <h1>There are no items to display..</h1>
+    <%}%>
+  </body>
+</html>
