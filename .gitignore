@@ -5,7 +5,6 @@ rls/
 *.o
 
 node_modules/
-mvc_di_catalog/node_modules/
 
 .github/workflows/ci.yml
 .github/workflows/.travis.yml

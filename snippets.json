@@ -1,0 +1,1090 @@
+[
+    {
+        "created": "2024-01-12T09:40:36.759Z",
+        "name": "tsenum",
+        "tags": [
+            "enum"
+        ],
+        "content": "const enum EnumOpenClose{\n    Open = 10,\n    Closed = 20\n   }\n  console.log(`const Closed =${EnumOpenClose.Open}`);",
+        "contentType": "typescript"
+    },
+    {
+        "created": "2024-01-12T12:47:46.168Z",
+        "name": "tslog",
+        "tags": [
+            "log",
+            "console",
+            "print"
+        ],
+        "content": "console.log(`${$1}`);",
+        "contentType": "typescript"
+    },
+    {
+        "created": "2024-01-12T19:40:05.498Z",
+        "name": "tstype_guard",
+        "tags": [
+            "type",
+            "typeof",
+            "guard",
+            "union"
+        ],
+        "content": "function addWithTypeGuard(\n  arg1: string | number,\n  arg2: string | number\n) {\n  if (typeof arg1 === \"string\"){\n\n  }\n}",
+        "contentType": "typescript"
+    },
+    {
+        "created": "2024-01-12T19:42:30.815Z",
+        "name": "tstype_alias",
+        "tags": [
+            "type",
+            "alias",
+            "pipe"
+        ],
+        "content": "type StringOrNumber = string | number;",
+        "contentType": "typescript"
+    },
+    {
+        "created": "2024-01-12T23:05:43.908Z",
+        "name": "tstype_guard_interface",
+        "tags": [
+            "guard",
+            "type",
+            "pipe",
+            "interface",
+            "in"
+        ],
+        "content": "interface A {\n    x: number;\n  }\n  interface B {\n    y: string;\n  }\n  \n  function doStuff(q: A | B) {\n    if ('x' in q) {}}",
+        "contentType": "typescript"
+    },
+    {
+        "created": "2024-01-12T23:11:03.590Z",
+        "name": "tstype_guard_class",
+        "tags": [
+            "type",
+            "instanceof",
+            "guard",
+            "pipe"
+        ],
+        "content": "class Foo {\n    foo = 123;\n    common = '123';\n}\n\nclass Bar {\n    bar = 123;\n    common = '123';\n}\n\nfunction doStuff(arg: Foo | Bar) {\n    if (arg instanceof Foo) {\n\n    }\n}",
+        "contentType": "typescript"
+    },
+    {
+        "created": "2024-01-12T23:24:22.833Z",
+        "name": "tsdestructuring_object",
+        "tags": [
+            "destruct",
+            "variable",
+            "paranthese"
+        ],
+        "content": "var {x, y, width, height} = rect;\n({x, y, width, height} = rect); // assign to existing variables using outer parentheses",
+        "contentType": "typescript"
+    },
+    {
+        "created": "2024-01-12T23:33:17.938Z",
+        "name": "tsdestructuring_object_remaining",
+        "tags": [
+            "destruct",
+            "remain"
+        ],
+        "content": "var {w, x, ...remaining} = {w: 1, x: 2, y: 3, z: 4};\nconsole.log(w, x, remaining); // 1, 2, {y:3,z:4}",
+        "contentType": "typescript"
+    },
+    {
+        "created": "2024-01-12T23:42:42.899Z",
+        "name": "tsdestructuring_array_remaining",
+        "tags": [
+            "array",
+            "destruct",
+            "remain"
+        ],
+        "content": "var [x, , ...remaining] = [1, 2, 3, 4];\nconsole.log(x, remaining); // 1, [3,4]",
+        "contentType": "typescript"
+    },
+    {
+        "created": "2024-01-12T23:43:48.173Z",
+        "name": "tsdestructuring_array",
+        "tags": [
+            "destruct",
+            "array"
+        ],
+        "content": "var x = 1, y = 2;\n_a = [y,x], x = _a[0], y = _a[1];\nconsole.log(x, y);",
+        "contentType": "typescript"
+    },
+    {
+        "created": "2024-01-12T23:45:26.850Z",
+        "name": "tsdestructuring_array_exchange",
+        "tags": [
+            "destruct",
+            "array",
+            "exchage",
+            "variable"
+        ],
+        "content": "var x = 1, y = 2;\n[x, y] = [y, x];\nconsole.log(x, y); // 2,1",
+        "contentType": "typescript"
+    },
+    {
+        "created": "2024-01-13T08:47:58.497Z",
+        "name": "tsclosure_container",
+        "tags": [
+            "closure",
+            "container",
+            "function",
+            "return"
+        ],
+        "content": "function createCounter() {\n    let val = 0;\n    return {\n        increment() { val++ },\n        getVal() { return val }\n    }\n}\nlet counter = createCounter();\ncounter.increment();\nconsole.log(counter.getVal()); // 1\ncounter.increment();\nconsole.log(counter.getVal()); // 2\n",
+        "contentType": "typescript"
+    },
+    {
+        "created": "2024-01-14T09:29:29.386Z",
+        "name": "tstype_prop_mapping",
+        "tags": [
+            "assertion",
+            "map",
+            "type",
+            "macro",
+            "prefix",
+            "keyof"
+        ],
+        "content": "type PREFIX<Type> = {\n    [prop in keyof Type as `prefix_${string & prop}`]: () => Type[prop];\n};\ntype X = {\n    a: string;\n    b: number;\n    c: ()=>{}\n};\ntype Y = PREFIX<X>;",
+        "contentType": "typescript"
+    },
+    {
+        "created": "2024-01-14T16:08:19.715Z",
+        "name": "tserror_never_function",
+        "tags": [
+            "error",
+            "never",
+            "throw"
+        ],
+        "content": "  function fail(message: string): never { throw new Error(message); }",
+        "contentType": "typescript"
+    },
+    {
+        "created": "2024-01-14T21:53:59.841Z",
+        "name": "tsindex_retrieve_map",
+        "tags": [
+            "index",
+            "map",
+            "get",
+            "indexOf"
+        ],
+        "content": "const fooIndex = list.map(i => i.id).indexOf('foo');",
+        "contentType": "typescript"
+    },
+    {
+        "created": "2024-01-14T21:55:39.320Z",
+        "name": "tstype_structural",
+        "tags": [
+            "structural",
+            "type"
+        ],
+        "content": "type X = {\n    a: string;\n};\nconst y = { a: 'a', b: 'b' };\nconst x: X = y; // Valid because structural typing\nconst w: X = { a: 'a', b: 'b' }; // Invalid because excess property checking",
+        "contentType": "typescript"
+    },
+    {
+        "created": "2024-01-14T21:57:15.116Z",
+        "name": "tstype_prop_weak",
+        "tags": [
+            "type",
+            "weak",
+            "unknown",
+            "prop"
+        ],
+        "content": "type Options = {\n    [prop: string]: unknown;\n    a?: string;\n    b?: string;\n};\nconst fn = (options: Options) => undefined;\nfn({ c: 'c' }); // Valid",
+        "contentType": "typescript"
+    },
+    {
+        "created": "2024-01-15T10:22:12.753Z",
+        "name": "tstype_literal_number",
+        "tags": [
+            "type",
+            "literal",
+            "pipe"
+        ],
+        "content": "type OneToFive = 1 | 2 | 3 | 4 | 5;",
+        "contentType": "typescript"
+    },
+    {
+        "created": "2024-01-15T10:22:53.927Z",
+        "name": "tstype_literal_bool",
+        "tags": [
+            "literal",
+            "type",
+            "bool"
+        ],
+        "content": "type Bools = true | false;",
+        "contentType": "typescript"
+    },
+    {
+        "created": "2024-01-15T10:23:28.569Z",
+        "name": "tstype_literal_string",
+        "tags": [
+            "type",
+            "literal",
+            "string"
+        ],
+        "content": "type CardinalDirection =\n    | \"North\"\n    | \"East\"\n    | \"South\"\n    | \"West\";",
+        "contentType": "typescript"
+    },
+    {
+        "created": "2024-01-15T10:24:35.176Z",
+        "name": "tstype_literal_inference",
+        "tags": [
+            "type",
+            "literal",
+            "as",
+            "inference"
+        ],
+        "content": "function iTakeFoo(foo: 'foo') { }\nconst test = {\n  someProp: 'foo' as 'foo'\n};\niTakeFoo(test.someProp); ",
+        "contentType": "typescript"
+    },
+    {
+        "created": "2024-01-15T10:36:23.342Z",
+        "name": "tstype_literal_enum_string",
+        "tags": [
+            "literal",
+            "enum",
+            "keyof",
+            "typeof"
+        ],
+        "content": "function strEnum<T extends string>(o: Array<T>): {[K in T]: K} {\n  return o.reduce((res, key) => {\n    res[key] = key;\n    return res;\n  }, Object.create(null));\n}\nconst Direction = strEnum([\n  'North',\n  'South',\n  'East',\n  'West'\n])\ntype Direction = keyof typeof Direction;\n\nlet sample: Direction;\nsample = Direction.North; \nsample = 'North';\n//sample = 'AnythingElse'; // ERROR!",
+        "contentType": "typescript"
+    },
+    {
+        "created": "2024-01-15T12:08:51.510Z",
+        "name": "tstype_assertion_interface",
+        "tags": [
+            "type",
+            "assertion",
+            "as",
+            "interface"
+        ],
+        "content": "interface Foo {\n    bar: number;\n    bas: string;\n}\nvar foo = {} as Foo;\nfoo.bar = 123;\nfoo.bas = 'hello';",
+        "contentType": "typescript"
+    },
+    {
+        "created": "2024-01-16T08:33:19.593Z",
+        "name": "tstype_array_of_objects",
+        "tags": [
+            "type",
+            "object",
+            "array",
+            "interface",
+            "index"
+        ],
+        "content": "interface Foo {\n    [x: number]: number;\n}\n\nlet foo: Foo = { 0: 123, 1: 345 };\nconsole.log(foo[0]);   ",
+        "contentType": "typescript"
+    },
+    {
+        "created": "2024-01-16T08:52:12.113Z",
+        "name": "tstype_readonly_mutate",
+        "tags": [
+            "type",
+            "readonly",
+            "mutate",
+            "object"
+        ],
+        "content": "let foo: {readonly bar: number;} = {\n        bar: 123\n    };\nfunction iMutateFoo(foo: { bar: number }) {\n    foo.bar = 456;\n}\niMutateFoo(foo); // The foo argument is aliased by the foo parameter\nconsole.log(foo.bar); // 456!",
+        "contentType": "typescript"
+    },
+    {
+        "created": "2024-01-16T08:56:45.246Z",
+        "name": "tstype_readonly_immutate",
+        "tags": [
+            "type",
+            "immutate",
+            "readonly",
+            "interface"
+        ],
+        "content": "interface Foo {\n    readonly bar: number;\n}\nlet foo: Foo = {\n    bar: 123\n};\nfunction iTakeFoo(foo: Foo) {\n    foo.bar = 456; // Error! bar is readonly\n}\niTakeFoo(foo); // The foo argument is aliased by the foo parameter",
+        "contentType": "typescript"
+    },
+    {
+        "created": "2024-01-16T16:01:48.126Z",
+        "name": "tstype_assertion_const",
+        "tags": [
+            "type",
+            "as",
+            "const",
+            "assertion"
+        ],
+        "content": "const w = {\n    x: 1,\n    y: 2,\n} as const;\nconsole.log(`${w.x}`);",
+        "contentType": "typescript"
+    },
+    {
+        "created": "2024-01-16T16:05:04.354Z",
+        "name": "tstype_narrow_generic_const",
+        "tags": [
+            "type",
+            "narrow",
+            "generic",
+            "const",
+            "literal string"
+        ],
+        "content": "function identity<const T>(value: T) {\n    // Using const modifier on type parameters\n    return value;\n}\nconst values = identity({ a: 'a', b: 'b' }); // Type infered is: { a: \"a\"; b: \"b\"; }",
+        "contentType": "typescript"
+    },
+    {
+        "created": "2024-01-16T16:07:33.173Z",
+        "name": "tstype_array_const",
+        "tags": [
+            "type",
+            "array",
+            "const",
+            "readonly",
+            "tuple"
+        ],
+        "content": "const x = [1, 2, 3]; // number[]\nconst y = [1, 2, 3] as const; // Tuple of readonly [1, 2, 3]",
+        "contentType": "typescript"
+    },
+    {
+        "created": "2024-01-16T17:29:09.287Z",
+        "name": "tstype_index_multi_signature",
+        "tags": [
+            "type",
+            "index",
+            "multisignature",
+            "array"
+        ],
+        "content": "type K = {\n    [name: string | number]: string;\n};\nconst k: K = { x: 'x', 1: 'b' };\nconsole.log(`${k['x']}, ${k[1]}, ${k['1']}`); ",
+        "contentType": "typescript"
+    },
+    {
+        "created": "2024-01-16T18:06:06.407Z",
+        "name": "tsarray_prefilled",
+        "tags": [
+            "array",
+            "fill",
+            "collection"
+        ],
+        "content": "const foo: string[] = new Array(3).fill('');",
+        "contentType": "typescript"
+    },
+    {
+        "created": "2024-01-16T21:27:19.074Z",
+        "name": "tserror_doc",
+        "tags": [
+            "Error",
+            "Doc",
+            "Tags"
+        ],
+        "content": "///`>tags:` #Error_ #Error_",
+        "contentType": "typescript"
+    },
+    {
+        "created": "2024-01-16T21:34:05.450Z",
+        "name": "mderror_doc",
+        "tags": [
+            "md",
+            "error",
+            "doc"
+        ],
+        "content": "`>tags:` [[Error_ ]] [[Error_ ]]",
+        "contentType": "markdown"
+    },
+    {
+        "created": "2024-01-16T21:40:12.480Z",
+        "name": "mdimportant",
+        "tags": [
+            "md",
+            "important",
+            "note"
+        ],
+        "content": "`>tags:` [[Important]] [[]]",
+        "contentType": "markdown"
+    },
+    {
+        "created": "2024-01-16T21:48:04.331Z",
+        "name": "mdheader_bash_doc",
+        "tags": [
+            "md",
+            "header",
+            "doc"
+        ],
+        "content": "///\n/// ```bash\n/// pnpm tsc ./ --outfile  ./dist/.js\n/// ```\n///",
+        "contentType": "typescript"
+    },
+    {
+        "created": "2024-01-16T22:03:09.474Z",
+        "name": "tscounter_shift_left_one",
+        "tags": [
+            "shift",
+            "left",
+            "incerement",
+            "one"
+        ],
+        "content": "1 << 3 // Result 8",
+        "contentType": "typescript"
+    },
+    {
+        "created": "2024-01-16T22:22:29.971Z",
+        "name": "tsenum_export",
+        "tags": [
+            "enum",
+            "export",
+            "as",
+            "switch"
+        ],
+        "content": "export enum EvidenceTypeEnum {\n    UNKNOWN = '',\n    PASSPORT_VISA = 'passport_visa',\n    PASSPORT = 'passport',\n  }\n\nconst status = 'passport' as EvidenceTypeEnum; \n\nswitch (status) {\n    case EvidenceTypeEnum.PASSPORT:\n        console.log(status);\n    break        \n    case EvidenceTypeEnum.PASSPORT_VISA:\n        console.log(status);\n    break    \n}",
+        "contentType": "typescript"
+    },
+    {
+        "created": "2024-01-16T23:00:04.337Z",
+        "name": "tsenum_export_namespace",
+        "tags": [
+            "namespace",
+            "enum"
+        ],
+        "content": "enum Evidence {\n    UNKNOWN = '',\n    PASSPORT_VISA = 'passport_visa',\n    PASSPORT = 'passport'\n}\nnamespace Evidence {\n\texport function isThereEvidence(status: Evidence) {\n        switch (status) {\n            case Evidence.PASSPORT:\n                console.log(status);\n                return true;     \n            case Evidence.PASSPORT_VISA:\n\t\t\t\treturn true; \n            break  \n\t\t\tdefault:\n\t\t\t\treturn false;            \n          }\n     }\n} \nconst passport = Evidence.PASSPORT;\nconsole.log(Evidence.isThereEvidence(passport)); ",
+        "contentType": "typescript"
+    },
+    {
+        "created": "2024-01-17T09:28:00.290Z",
+        "name": "tstype_is",
+        "tags": [
+            "unknown",
+            "is",
+            "typeof"
+        ],
+        "content": "const isString = (value: unknown): value is string => typeof value === 'string';",
+        "contentType": "typescript"
+    },
+    {
+        "created": "2024-01-17T10:13:57.854Z",
+        "name": "tsarray_triple_dot_map",
+        "tags": [
+            "map",
+            "array",
+            "triple_dot"
+        ],
+        "content": "const someNumbers = [...new Array(3)].map((_,i) => i * 10);",
+        "contentType": "typescript"
+    },
+    {
+        "created": "2024-01-17T10:15:17.654Z",
+        "name": "tsfb_sum",
+        "tags": [
+            "function",
+            "fp",
+            "sum"
+        ],
+        "content": "const sum = (x: { a: number; b: number }) => x.a + x.b;",
+        "contentType": "typescript"
+    },
+    {
+        "created": "2024-01-17T11:12:47.998Z",
+        "name": "tstype_convert_mapprop_to_readonly",
+        "tags": [
+            "type",
+            "map",
+            "property",
+            "keyof"
+        ],
+        "content": "type ReadOnly<T> = { readonly [P in keyof T]: T[P] }; // All properties marked as read-only",
+        "contentType": "typescript"
+    },
+    {
+        "created": "2024-01-17T11:14:10.729Z",
+        "name": "tstype_convert_mapprop_to_mutate",
+        "tags": [
+            "type",
+            "mutate",
+            "readonly",
+            "keyof"
+        ],
+        "content": "type Mutable<T> = { -readonly [P in keyof T]: T[P] }; // All properties marked as mutable",
+        "contentType": "typescript"
+    },
+    {
+        "created": "2024-01-17T11:14:50.419Z",
+        "name": "tstype_convert_mapprop_to_optional",
+        "tags": [
+            "partial",
+            "type",
+            "optional",
+            "keyof"
+        ],
+        "content": "type MyPartial<T> = { [P in keyof T]?: T[P] }; // All properties marked as optional",
+        "contentType": "typescript"
+    },
+    {
+        "created": "2024-01-17T15:10:04.024Z",
+        "name": "tstype_conditional_is_null",
+        "tags": [
+            "type",
+            "conditional",
+            "null",
+            "generic",
+            "any",
+            "is",
+            "null"
+        ],
+        "content": "type Nullable<T> = T extends any ? T | null : never;\ntype NumberOrBool = number | boolean;\ntype NullableNumberOrBool = Nullable<NumberOrBool>;",
+        "contentType": "typescript"
+    },
+    {
+        "created": "2024-01-17T15:11:19.528Z",
+        "name": "tstype_conditional_is_array",
+        "tags": [
+            "type",
+            "conditional",
+            "generic",
+            "any",
+            "typeof",
+            "is",
+            "array"
+        ],
+        "content": "type IsArray<T> = T extends any[] ? true : false;\nconst myArray = [1, 2, 3];\nconst myNumber = 42;\ntype IsMyArrayAnArray = IsArray<typeof myArray>; \ntype IsMyNumberAnArray = IsArray<typeof myNumber>; ",
+        "contentType": "typescript"
+    },
+    {
+        "created": "2024-01-17T15:15:13.871Z",
+        "name": "tstype_conditional_infer",
+        "tags": [
+            "type",
+            "conditional",
+            "generic",
+            "infer"
+        ],
+        "content": "type ElementType<T> = T extends (infer U)[] ? U : never;\ntype Numbers = ElementType<number[]>; // number\ntype Strings = ElementType<string[]>; // string",
+        "contentType": "typescript"
+    },
+    {
+        "created": "2024-01-17T17:16:48.453Z",
+        "name": "tsswitchcase_by_default_error",
+        "tags": [
+            "switch",
+            "case",
+            "error",
+            "default"
+        ],
+        "content": "function assertNever(x:never): never {\n    throw new Error('Unexpected value. Should have been never.');\n}\nfunction func(input: something) {\n    switch (input.kind) {\n        case \"something\": return something\n        default: return assertNever(input);\n    }\n}",
+        "contentType": "typescript"
+    },
+    {
+        "created": "2024-01-18T11:27:15.735Z",
+        "name": "tspattern_decorator_tostring",
+        "tags": [
+            "design",
+            "decorator",
+            "toString"
+        ],
+        "content": "type Constructor<T = {}> = new (...args: any[]) => T;\nfunction toString<Class extends Constructor>(\n    Value: Class,\n    context: ClassDecoratorContext<Class>\n) {\n    return class extends Value {\n        constructor(...args: any[]) {\n            super(...args);\n            console.log(JSON.stringify(this));\n            console.log(JSON.stringify(context));\n        }\n    };\n}\n@toString\nclass Person {}",
+        "contentType": "typescript"
+    },
+    {
+        "created": "2024-01-18T11:31:51.809Z",
+        "name": "tspattern_decorator_property_uppercase",
+        "tags": [
+            "decorator",
+            "string",
+            "uppercase",
+            "property"
+        ],
+        "content": "function upperCase<T>(\n    target: undefined,\n    context: ClassFieldDecoratorContext<T, string>\n) {\n    return function (this: T, value: string) {\n        return value.toUpperCase();\n    };\n}\nclass MyClass {\n    @upperCase\n    prop1 = 'hello!';\n}",
+        "contentType": "typescript"
+    },
+    {
+        "created": "2024-01-18T11:53:38.208Z",
+        "name": "tspattern_decorator_method_log",
+        "tags": [
+            "decorator",
+            "method",
+            "log"
+        ],
+        "content": "function log<This, Args extends any[], Return>(\n    target: (this: This, ...args: Args) => Return,\n    context: ClassMethodDecoratorContext<\n        This,\n        (this: This, ...args: Args) => Return\n    >\n) {\n    const methodName = String(context.name);\n\n    function replacementMethod(this: This, ...args: Args): Return {\n        console.log(`LOG: Entering method '${methodName}'.`);\n        const result = target.call(this, ...args);\n        console.log(`LOG: Exiting method '${methodName}'.`);\n        return result;\n    }\n\n    return replacementMethod;\n}\nclass MyClass {\n    @log\n    sayHello() {}}",
+        "contentType": "typescript"
+    },
+    {
+        "created": "2024-01-18T22:33:17.930Z",
+        "name": "md_figure_insert",
+        "tags": [
+            "figure",
+            "figcaption"
+        ],
+        "content": "<figure markdown>\r\n![](../../../../../assets/attachments/design_patterns/.png){ width=600 height=400 align=center }\r\n<figcaption></figcaption>\r\n</figure>",
+        "contentType": "markdown"
+    },
+    {
+        "created": "2024-01-20T10:53:12.850Z",
+        "name": "tspattern_decorator_getter_range",
+        "tags": [
+            "pattern",
+            "decorator",
+            "getter",
+            "range"
+        ],
+        "content": "function range<This, Return extends number>(min: number, max: number) {\n    return function (\n        target: (this: This) => Return,\n        context: ClassGetterDecoratorContext<This, Return>\n    ) {\n        return function (this: This): Return {\n            const value = target.call(this);\n            if (value < min || value > max) {\n                throw 'Invalid';\n            }\n            Object.defineProperty(this, context.name, {\n                value,\n                enumerable: true,\n            });\n            return value;\n        };\n    };\n}\n\nclass MyClass {\n    private _value = 0;\n    constructor(value: number) {\n        this._value = value;\n    }\n    @range(1, 100)\n    get getValue(): number {\n        return this._value;\n    }\n}",
+        "contentType": "typescript"
+    },
+    {
+        "created": "2024-01-20T11:01:41.403Z",
+        "name": "tspattern_decorator_metadata_return_bool",
+        "tags": [
+            "pattern",
+            "decorator",
+            "metadata",
+            "symbol"
+        ],
+        "content": "//@ts-ignore\nSymbol.metadata ??= Symbol('Symbol.metadata'); // Simple polify\ntype Context =\n    | ClassFieldDecoratorContext\n    | ClassAccessorDecoratorContext\n    | ClassMethodDecoratorContext; // Context contains property metadata: DecoratorMetadata\n\nfunction setMetadata(_target: any, context: Context) {\n    // Set the metadata object with a primitive value\n    context.metadata[context.name] = true;\n}\nclass MyClass {\n    @setMetadata\n    a = 123;\n\n    @setMetadata\n    accessor b = 'b';\n\n    @setMetadata\n    fn() {}\n}\nconst metadata = MyClass[Symbol.metadata]; // Get metadata information\nconsole.log(JSON.stringify(metadata)); // {\"bar\":true,\"baz\":true,\"foo\":true}",
+        "contentType": "typescript"
+    },
+    {
+        "created": "2024-01-20T11:30:11.974Z",
+        "name": "tsfb_generic_constant_extends_length",
+        "tags": [
+            "function",
+            "generic",
+            "constant",
+            "extends",
+            "length"
+        ],
+        "content": "const printLen = <T extends { length: number }>(value: T): void => {\n    console.log(value.length);\n};",
+        "contentType": "typescript"
+    },
+    {
+        "created": "2024-01-20T11:41:07.088Z",
+        "name": "tstype_generic_propagate_extends_array",
+        "tags": [
+            "type",
+            "generic",
+            "propagate",
+            "extends",
+            "array",
+            "pointfree"
+        ],
+        "content": "declare function pipe<A extends any[], B, C>(\n    ab: (...args: A) => B,\n    bc: (b: B) => C\n): (...args: A) => C;\n\ndeclare function list<T>(a: T): T[];\ndeclare function box<V>(x: V): { value: V };\n\nconst listBox = pipe(list, box); // <T>(a: T) => { value: T[] }\nconst boxList = pipe(box, list); // <V>(x: V) => { value: V }[]",
+        "contentType": "typescript"
+    },
+    {
+        "created": "2024-01-20T11:47:42.446Z",
+        "name": "tstype_generic_conditional_narrowing",
+        "tags": [
+            "type",
+            "generic",
+            "conditional",
+            "narrow",
+            "typeof"
+        ],
+        "content": "function process<T>(value: T): void {\n    if (typeof value === 'string') {\n        // Value is narrowed down to type 'string'\n        console.log(value.length);\n    } else if (typeof value === 'number') {\n        // Value is narrowed down to type 'number'\n        console.log(value.toFixed(2));\n    }\n}",
+        "contentType": "typescript"
+    },
+    {
+        "created": "2024-01-20T15:04:45.262Z",
+        "name": "tststype_symbol",
+        "tags": [
+            "type",
+            "symbol",
+            "primitive"
+        ],
+        "content": "const key1: symbol = Symbol('key1');\nconst key2: symbol = Symbol('key2');\nconst obj = {\n    [key1]: 'value 1',\n    [key2]: 'value 2',\n};\nconsole.log(obj[key1]); // value 1\nconsole.log(obj[key2]); // value 2",
+        "contentType": "typescript"
+    },
+    {
+        "created": "2024-01-20T17:21:25.896Z",
+        "name": "tstype_transform_to_readonly",
+        "tags": [
+            "type",
+            "transform",
+            "readonly",
+            "keyof",
+            "in"
+        ],
+        "content": "type Mutable<T> = {\n    readonly [P in keyof T]: T[P];\n};\ntype Person = {\n    name: string;\n    age: number;\n};\ntype ImmutablePerson = Mutable<Person>; // Properties become read-only",
+        "contentType": "typescript"
+    },
+    {
+        "created": "2024-01-21T08:14:07.367Z",
+        "name": "tstype_mix_classes",
+        "tags": [
+            "type",
+            "mix",
+            "class",
+            "getOwnProperty"
+        ],
+        "content": "abstract class Identifiable {\n    name: string = '';\n    logId() {\n        console.log('id:', this.name);\n    }\n}\nabstract class Selectable {\n    selected: boolean = false;\n    select() {\n        this.selected = true;\n        console.log('Select');\n    }\n}\nclass MyClass {\n    constructor() {}\n}\n// Extend MyClass to include the behavior of Identifiable and Selectable\ninterface MyClass extends Identifiable, Selectable {}\n// Function to apply mixins to a class\nfunction applyMixins(source: any, baseCtors: any[]) {\n    baseCtors.forEach(baseCtor => {\n        Object.getOwnPropertyNames(baseCtor.prototype).forEach(name => {\n            let descriptor = Object.getOwnPropertyDescriptor(\n                baseCtor.prototype,\n                name\n            );\n            if (descriptor) {\n                Object.defineProperty(source.prototype, name, descriptor);\n            }\n        });\n    });\n}\n// Apply the mixins to MyClass\napplyMixins(MyClass, [Identifiable, Selectable]);",
+        "contentType": "typescript"
+    },
+    {
+        "created": "2024-01-22T08:32:55.542Z",
+        "name": "tsasnyc_promise_timeout",
+        "tags": [
+            "asnyc",
+            "promise",
+            "settTimeout",
+            "await",
+            "resolve",
+            "delay"
+        ],
+        "content": "function delay(milliseconds: number, count: number): Promise<number> {\n    return new Promise<number>(resolve => {\n            setTimeout(() => {\n                resolve(count);\n            }, milliseconds);\n        });\n}\nasync function main(): Promise<void> {\n    //...\n    const count: number = await delay(500, i);\n}\nmain();",
+        "contentType": "typescript"
+    },
+    {
+        "created": "2024-01-27T12:32:35.221Z",
+        "name": "tstype_assertion_fn_is_number",
+        "tags": [
+            "type",
+            "assert",
+            "is",
+            "throw",
+            "error"
+        ],
+        "content": "type AssertIsNumber = (value: unknown) => asserts value is number;\nconst isNumber: AssertIsNumber = value => {\n    if (typeof value !== 'number') {\n        throw new Error('Not a number');\n    }\n};",
+        "contentType": "typescript"
+    },
+    {
+        "created": "2024-01-28T11:41:40.208Z",
+        "name": "tspr",
+        "tags": [
+            "private",
+            "readonly"
+        ],
+        "content": "private readonly",
+        "contentType": "typescript"
+    },
+    {
+        "created": "2024-01-28T19:01:15.825Z",
+        "name": "tsconcat_tuple_unknown",
+        "tags": [
+            "concat",
+            "unknown",
+            "array",
+            "variadic"
+        ],
+        "content": "type Items = readonly unknown[];\nfunction concat<T extends Items, U extends Items>(\n    arr1: T,\n    arr2: U\n): [...T, ...U] {\n    return [...arr1, ...arr2];\n}\nconsole.log(`${concat([1, 2, 3], ['4', '5', '6'])}`);",
+        "contentType": "typescript"
+    },
+    {
+        "created": "2024-01-28T19:05:59.856Z",
+        "name": "tstype_tuple_variadic",
+        "tags": [
+            "unknown",
+            "type",
+            "tuple",
+            "variadic",
+            "array"
+        ],
+        "content": "type Bar<T extends unknown[], G extends unknown[]> = [...T, boolean, ...G];\ntype A = Bar<[number], [string]>; // [number, boolean, string]\ntype B = Bar<['a', 'b'], [boolean]>; // [\"a\", \"b\", boolean, boolean]\n",
+        "contentType": "typescript"
+    },
+    {
+        "created": "2024-01-28T19:17:54.917Z",
+        "name": "tstype_box_normalize_string",
+        "tags": [
+            "type",
+            "normalize",
+            "prototype",
+            "String",
+            "wrap"
+        ],
+        "content": "const originalNormalize = String.prototype.normalize;\nString.prototype.normalize = function () {\n    console.log(this, typeof this);\n    return originalNormalize.call(this);\n};\nconsole.log('\\u0041'.normalize());",
+        "contentType": "typescript"
+    },
+    {
+        "created": "2024-01-28T19:56:26.504Z",
+        "name": "tstype_symbol_string_pattern",
+        "tags": [
+            "type",
+            "symbol",
+            "template",
+            "pattern",
+            "index",
+            "signature",
+            "key"
+        ],
+        "content": "type MyKeys = `key-${string}`;\ntype MyObject = {\n    [key: MyKeys]: number;\n};\n\nconst obj: MyObject = {    \n    'key-a': 123,\n    'key-b': 456,\n};\n\nconsole.log(obj['key-a']);",
+        "contentType": "typescript"
+    },
+    {
+        "created": "2024-01-28T20:55:30.280Z",
+        "name": "ts_settimeout_async",
+        "tags": [
+            "async",
+            "resolve",
+            "promise"
+        ],
+        "content": "async close() {\n    console.log('Closing the connection...');\n    await new Promise(resolve => setTimeout(resolve, 1000));\n    console.log('Connection closed.');\n}",
+        "contentType": "typescript"
+    },
+    {
+        "created": "2024-02-14T07:31:05.584Z",
+        "name": "tstsjson_strfy",
+        "tags": [
+            "json",
+            "stringify",
+            "convert"
+        ],
+        "content": "JSON.stringify(obj)",
+        "contentType": "typescript"
+    },
+    {
+        "created": "2024-02-14T08:04:25.610Z",
+        "name": "tsfp_args_len",
+        "tags": [
+            "function",
+            "arguments",
+            "length"
+        ],
+        "content": "arguments.length",
+        "contentType": "typescript"
+    },
+    {
+        "created": "2024-02-14T08:09:31.715Z",
+        "name": "tsfp_args_spread",
+        "tags": [
+            "array",
+            "arguments",
+            "spread",
+            "function"
+        ],
+        "content": "function testArguments(...args: (string[] | number[])) { }",
+        "contentType": "typescript"
+    },
+    {
+        "created": "2024-02-14T09:54:21.446Z",
+        "name": "tsif_in",
+        "tags": [
+            "if",
+            "in",
+            "notation"
+        ],
+        "content": "    if ('id' in obj) {\n      console.log(`obj.name : ${obj.name}`);\n    }",
+        "contentType": "typescript"
+    },
+    {
+        "created": "2024-02-14T10:13:38.023Z",
+        "name": "tsoop_keyofvalue",
+        "tags": [
+            "oop",
+            "interface",
+            "keyof",
+            "in"
+        ],
+        "content": "interface IPerson {\n  id: number;\n  name: string;\n}\ntype PersonPropertyName = keyof IPerson;\n\nfunction getProperty(key: PersonPropertyName, value: IPerson) {\n    if ('name' in value) {\n      console.log(`value.name : ${value.name}`);\n    }\n  console.log(`${key} = ${value[key]}`);\n}\ngetProperty(\"name\", { id: 2, name: \"secondName\" });",
+        "contentType": "typescript"
+    },
+    {
+        "created": "2024-02-14T11:06:18.066Z",
+        "name": "tsoop_log_constructor",
+        "tags": [
+            "log",
+            "constructor",
+            "new",
+            "target"
+        ],
+        "content": "constructor() {\n  console.log(new.target);\n}",
+        "contentType": "typescript"
+    },
+    {
+        "created": "2024-02-14T16:30:03.441Z",
+        "name": "tsarray_concatenator",
+        "tags": [
+            "array",
+            "concatenator",
+            "generic",
+            "concat"
+        ],
+        "content": "class Concatenator<T extends Array<string> | Array<number>> {  \n    // Method that concatenates the array of items into a string\n    public concatenateArray(items: T): string {      \n      // Initialize an empty string to store the concatenated values\n      let returnString = \"\";  \n      // Loop through each item in the array\n      for (let i = 0; i < items.length; i++) {\n        // If this is not the first item, add a comma before appending the value\n        returnString += i > 0 ? \",\" : \"\";        \n        // Append the current value to the return string\n        returnString += items[i].toString();\n      }\n      // Return the final concatenated string\n      return returnString;\n    }\n  }\n// Create a new instance of the Concatenator class\nlet concator = new Concatenator();\n// Concatenate an array of strings\nlet concatResult = concator.concatenateArray([\"first\", \"second\", \"third\"]);",
+        "contentType": "typescript"
+    },
+    {
+        "created": "2024-02-14T16:51:47.700Z",
+        "name": "ts_generic_extends_keyof",
+        "tags": [
+            "generic",
+            "extends",
+            "keyof",
+            "object"
+        ],
+        "content": "function printProperty<T, K extends keyof T>\n (object: T, key: K) {\n let propertyValue = object[key];\n console.log(`object[${key}] = ${propertyValue}`);\n}\nlet obj1 = {\n    id: 1,\n    name: \"myName\",\n    print() { console.log(`${this.id}`) }\n}   \nprintProperty(obj1, \"id\");",
+        "contentType": "typescript"
+    },
+    {
+        "created": "2024-02-14T17:14:03.536Z",
+        "name": "tsimportant",
+        "tags": [
+            "header",
+            "doc"
+        ],
+        "content": "/// `>tags:` [[Important]] [[Lib]] #",
+        "contentType": "typescript"
+    },
+    {
+        "created": "2024-02-14T17:16:27.258Z",
+        "name": "ts_new_instance",
+        "tags": [
+            "instance",
+            "object",
+            "class",
+            "create",
+            "new",
+            "arg"
+        ],
+        "content": "class ClassA {\n    constructor(){\n        console.log(new.target);\n    }\n }\nfunction createClassInstance<T>\n (arg1: { new(): T }): T {\n return new arg1();\n}\nlet classAInstance = createClassInstance(ClassA);",
+        "contentType": "typescript"
+    },
+    {
+        "created": "2024-02-14T19:17:04.882Z",
+        "name": "tspattern_map_type",
+        "tags": [
+            "map",
+            "in",
+            "keyof",
+            "generic",
+            "wapper"
+        ],
+        "content": "///Add in the keyof keyword, and we can create new types based on the properties of another type.\ninterface IAbRequired {\n  a: number;\n  b: string;\n}\nlet ab: IAbRequired = {\n  a: 1,\n  b: \"test\",\n};\ntype TMapper<T> = {\n  [K in keyof T]?: T[K];\n};\nlet allOptional: TMapper<IAbRequired> = {a:2, b:\"test2\"};",
+        "contentType": "typescript"
+    },
+    {
+        "created": "2024-02-14T19:42:13.026Z",
+        "name": "tstspattern_record_ready",
+        "tags": [
+            "record",
+            "map",
+            "wrapper",
+            "generic"
+        ],
+        "content": "type RecordedCd = Record<\"c\" | \"d\", number>;\nlet recordedCdVar: RecordedCd = {\n  c: 1,\n  d: 1,\n};\n",
+        "contentType": "typescript"
+    },
+    {
+        "created": "2024-02-14T19:43:32.569Z",
+        "name": "tspattern_pick_ready",
+        "tags": [
+            "pick",
+            "map",
+            "wrapper",
+            "generic"
+        ],
+        "content": "interface IAbc {\n  a: number;\n  b: string;\n  c: boolean;\n}\ntype PickAb = Pick<IAbc, \"a\" | \"b\">;\nlet pickAbObject: PickAb = {\n  a: 1,\n  b: \"test\",\n};",
+        "contentType": "typescript"
+    },
+    {
+        "created": "2024-02-14T19:44:14.229Z",
+        "name": "tstspattern_readonly_ready",
+        "tags": [
+            "readonly",
+            "map",
+            "wrapper",
+            "generic"
+        ],
+        "content": "interface IAbRequired {\n  a: number;\n  b: string;\n}\ntype Readonly<T> = {\n readonly [P in keyof T]: T[P];\n};\nlet readonlyVar: Readonly<IAbRequired> =\n{\n a: 1,\n b: \"test\"\n}\nreadonlyVar.a = 1;",
+        "contentType": "typescript"
+    },
+    {
+        "created": "2024-02-14T19:47:15.782Z",
+        "name": "tspattern_require",
+        "tags": [
+            "required",
+            "map",
+            "wrapper",
+            "generic"
+        ],
+        "content": "interface IAbRequired {\n  a: number;\n  b: string;\n}\ntype Required<T> = {\n  [P in keyof T]-?: T[P];\n};\nlet readonlyVar: Required<IAbRequired> =\n{\n a: 1,\n b: \"test\"\n}\nreadonlyVar.a = 1;",
+        "contentType": "typescript"
+    },
+    {
+        "created": "2024-02-15T20:34:29.628Z",
+        "name": "tstype_conditional_isarray",
+        "tags": [
+            "type",
+            "conditional",
+            "isarray"
+        ],
+        "content": "type IsArray<T> = T extends any[] ? true : false;\nconst myArray = [1, 2, 3];\nconst myNumber = 42;\ntype IsMyArrayAnArray = IsArray<typeof myArray>; \ntype IsMyNumberAnArray = IsArray<typeof myNumber>; ",
+        "contentType": "typescript"
+    },
+    {
+        "created": "2024-02-15T20:36:07.821Z",
+        "name": "tstype_conditional_distributed",
+        "tags": [
+            "type",
+            "conditional",
+            "distributed",
+            "generic",
+            "extends"
+        ],
+        "content": "type dateOrNumberOrString<T> =\n T extends Date ? Date :\n T extends number ? Date | number :\n T extends string ? Date | number | string :\n never;\nfunction compareValues\n <T extends string | number | Date | boolean>\n(\n input: T,\n compareTo: dateOrNumberOrString<T>\n) {\nconsole.log(`${input},${compareTo}`);\n}\n// Calling the compareValues function with different arguements\ncompareValues(new Date(), new Date());\ncompareValues(1, new Date());\ncompareValues(1, 2)\ncompareValues(\"test\", new Date());\ncompareValues(\"test\", 1);\ncompareValues(\"test\", \"test\");",
+        "contentType": "typescript"
+    },
+    {
+        "created": "2024-02-15T20:37:21.776Z",
+        "name": "tstype_conditional_infer_as_object",
+        "tags": [
+            "type",
+            "conditional",
+            "infer",
+            "generic",
+            "extends"
+        ],
+        "content": "type inferFromPropertyType<T> =\n T extends { id: infer U } ? U : never;\n\n function testInferFromPropertyType<T>\n(\n arg: inferFromPropertyType<T>\n) { \n    console.log(`${arg}`);\n}\ntestInferFromPropertyType<{ id: string }>(\"test\");\ntestInferFromPropertyType<{ id: number }>(1);",
+        "contentType": "typescript"
+    },
+    {
+        "created": "2024-02-15T20:40:13.150Z",
+        "name": "tstype_conditional_infer_as_function",
+        "tags": [
+            "type",
+            "conditional",
+            "infer",
+            "generic",
+            "extends",
+            "function"
+        ],
+        "content": "type inferredFromFnReturnType<T> =\n T extends (a: string) => infer U ? U : never;\n\nfunction testInferredFromReturnType<T>(\n arg: inferredFromFnReturnType<T>\n) {\n    console.log(`${arg}`);\n }\ntestInferredFromReturnType<(a: string) => number>(1);\ntestInferredFromReturnType<(a: string) => boolean>(false);",
+        "contentType": "typescript"
+    },
+    {
+        "created": "2024-02-15T20:40:50.867Z",
+        "name": "tstype_conditional_infer_as_array",
+        "tags": [
+            "type",
+            "conditional",
+            "infer",
+            "generic",
+            "extends",
+            "array"
+        ],
+        "content": "type inferredTypeFromArray<T> =\n    T extends (infer U)[] ? U : never;\n\nfunction testInferredFromArray<T>\n    (args: inferredTypeFromArray<T>)\n{ \n    console.log(`${args}`);\n}\ntestInferredFromArray<string[]>(\"test\");\ntestInferredFromArray<number[]>(1);",
+        "contentType": "typescript"
+    },
+    {
+        "created": "2024-02-15T20:41:56.459Z",
+        "name": "tststype_conditional_exclude",
+        "tags": [
+            "type",
+            "conditional",
+            "exclude",
+            "generic",
+            "extends"
+        ],
+        "content": "type ExcludeStringAndNumber = Exclude<\n string | number | boolean,\n string | number>;\nlet boolValue: ExcludeStringAndNumber = true;\nconsole.log(`${boolValue}`);",
+        "contentType": "typescript"
+    },
+    {
+        "created": "2024-02-15T20:42:49.883Z",
+        "name": "tststype_conditional_extract",
+        "tags": [
+            "type",
+            "conditional",
+            "extract",
+            "generic",
+            "extends"
+        ],
+        "content": "type StringOrNumber = Extract<\n string | boolean | never,\n string | number>;\nlet stringValue: StringOrNumber = \"test\";",
+        "contentType": "typescript"
+    },
+    {
+        "created": "2024-02-15T20:43:33.110Z",
+        "name": "tststype_conditional_nonnullable",
+        "tags": [
+            "type",
+            "conditional",
+            "nonnullable",
+            "generic",
+            "extends"
+        ],
+        "content": "type NotNullOrUndef = NonNullable<number | undefined | null>;\nlet numValue: NotNullOrUndef = 1;",
+        "contentType": "typescript"
+    }
+]
