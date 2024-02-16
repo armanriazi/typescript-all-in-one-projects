@@ -3,10 +3,12 @@
       "target": "es5",
       "module": "commonjs",
       "allowJs": true,
-      "declaration": true,
+      "declaration": true,   
+      "declarationMap": false,
       "strict": true,
       "esModuleInterop": true,
       "skipLibCheck": true,
+      
       "forceConsistentCasingInFileNames": true
     },
     "include": [
