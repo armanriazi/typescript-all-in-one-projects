@@ -23,6 +23,3 @@ When we run the code, we can see that:
 - The containsError function returns false for the successMessage object and, therefore, logs the value passed in as the msg argument to the console.
 
 
-Benefits of detailed declaration files
-
-With these changes in place, any TypeScript code that uses these functions will **ensure that the desired message structure** is adhered to. Having a detailed declaration file for external JavaScript functions and libraries enhances the available **documentation** because it can be integrated directly into the **code completion or code-hinting** engine of the IDE we are using. Declaration files describe code as if it were written directly in TypeScript and will enforce the same strict typing rules for any code that we write using the external JavaScript libraries.

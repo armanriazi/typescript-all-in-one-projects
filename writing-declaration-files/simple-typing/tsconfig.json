@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "allowJs": true,
+    "declaration": true,
+    "strict": false,
+    "esModuleInterop": true,
+    "outDir": "./dist",
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
+    },
+    "include": [
+        "declaration_file_samples.ts",
+        "declaration_file_typing.d.ts"
+      ]
+}
