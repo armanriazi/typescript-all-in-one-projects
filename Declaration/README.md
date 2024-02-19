@@ -5,7 +5,7 @@ With these changes in place, any TypeScript code that uses these functions will 
 
 ## Nested namespaces and a function
 
-```ts
+```typescript
 // This code declares a TypeScript module with nested namespaces and a function
 declare module FirstNamespace {
     module SecondNamespace {
@@ -33,7 +33,7 @@ We can turn this option on by uncommenting it in the tsconfig.js file as follows
 
 For example:
 
-```ts
+```typescript
 // Interface defining filterable object
 interface IFilterable {
   name?: string;
@@ -56,7 +56,7 @@ function filterUndefined<T extends IFilterable>
 
 Generated declaration file
 
-```ts
+```typescript
 // Interface defining filterable object
 interface IFilterable {
   name?: string;

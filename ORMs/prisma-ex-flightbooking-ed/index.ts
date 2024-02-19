@@ -216,5 +216,5 @@ app.get("/employee/:id", async (req: Request, res: Response) => {
 app.listen(port, (): void => {
   console.log(`Successfully connected to db:::-> `, process.env.DATABASE_URL)
 
-  console.log(`App is live on:::: -> ${process.env.EDUCATIVE_LIVE_VM_URL} 🔥`);
+  console.log(`App is live on:::: -> ${process.env.EDU_LIVE_VM_URL} 🔥`);
 });

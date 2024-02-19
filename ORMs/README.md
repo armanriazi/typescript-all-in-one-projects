@@ -1,7 +1,10 @@
 # Overview of ORMs
 
-* [Prisma](./Prisma.md)
-    * [Project Prisma-ed](./prisma-ed/README.md)
+* [Prisma](./Prisma.md)  
+    * [Project Prisma-company-ed](./prisma-ex-company-ed/README.md)    
+    * [Project Prisma-flightbooking-ed](./prisma-ex-flightbooking-ed/README.md)    
+* [TypeORM](./TypeORM.md)
+    * [Project typeorm-starter-ed](./typeorm-starter-ed/README.md)    
 
 # Overview of SQL relationships
 ## One-to-one
@@ -59,7 +62,7 @@ A few ORMs with excellent support for TypeScript are:
 
 Prisma is a relatively new library but is very popular and stable with significant community contributions. With Prisma, we can easily add records to a table in the form of simple JavaScript objects.
 
-```ts
+```typescript
 let user = await prisma.users.create({
   firstName: "John Doe",
   title: "Web engineer",
@@ -69,7 +72,7 @@ let user = await prisma.users.create({
 
 Prisma provides a unique declarative way of building models for our entities or tables that’s very friendly and human-readable.
 
-```ts
+```typescript
 model @Post {
   id Int @id default(autoincrement())
   title String
@@ -82,7 +85,7 @@ model @Post {
 
 TypeORM is one of the best choices for TypeScript developers since it provides support for the latest features of JavaScript, like the class decorators. We can easily build models using regular classes and decorators.
 
-```ts
+```typescript
 import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
 
 @Entity('teacher')
@@ -119,7 +122,7 @@ Query is a familiar word to database admins and back-end engineers. It means act
 
 Queries across different ORMs are very similar, and they are usually built-in functions with well-defined function names that accept some arguments, usually in the form of objects.
 
-```ts
+```typescript
 const foundCompany = await this.companyRepo.findOne({
 where: { company_email: data.company_email },
     });
@@ -130,7 +133,7 @@ where: { company_email: data.company_email },
 Relationships are important when working with relational database management systems. They define how different tables (entities or models) are interconnected.
 Let’s see how a **many-to-one relationship** between a Player table and a Club table is defined.
 
-```ts
+```typescript
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany, Exclude, ManyToOne, JoinColumn} from "typeorm";
 
 @Entity('player')

@@ -1,0 +1,41 @@
+
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model FlightBooking {
+  id            Int      @id @default(autoincrement())
+  createdAt     DateTime @default(now()) @map("created_at")
+  updatedAt     DateTime @updatedAt @map("updated_at")
+  leavingAt     DateTime @default(now())
+  returningAt   DateTime
+  country       String   @db.VarChar(255)
+  state         String   @db.VarChar(255)
+  destination   String   @db.VarChar(255)
+  tripType      String   @db.VarChar(255)
+  passengerSize Int      @default(1)
+  promoCode     String?   @db.VarChar(255)
+  amount        Int
+  email         String   @db.VarChar(255)
+  user_id       Int   
+  user  User @relation(fields: [user_id], references: [id])
+}
+
+model User {
+  id            Int      @id @default(autoincrement())
+  name          String
+  nationality   String
+  createdAt     DateTime @default(now()) @map("created_at")
+  updatedAt     DateTime @updatedAt @map("updated_at")
+  national_id   String
+  maritalStatus String
+  sex String
+  age Int
+  bookedFlights FlightBooking[]
+}

@@ -1,12 +1,13 @@
 # Prisma 
 
-[prisma-ed](./prisma-ed/README.md)
+[prisma-ex-company-ed](./prisma-ex-company-ed/README.md)
+[prisma-ex-flightbooking-ed](./prisma-ex-flightbooking-ed/README.md)
 
 ---
 
 Prisma is a popular and stable library with an active community contributing to building TypeScript’s back-end applications. Among the ORMs used in the industry, Prisma happens to be one of the best. It uses regular JavaScript objects and can interact with any SQL database.
 
-```ts
+```typescript
 // create employee
 const new_employee = await prisma.employee.create({
   data: {
@@ -21,7 +22,7 @@ const new_employee = await prisma.employee.create({
 
 Prisma has a very unique structure. It provides a model that enables a well-outlined structure, defining how our database columns interact with each other.
 
-```ts
+```typescript
 //schema.prisma
 
 datasource db {
@@ -60,7 +61,7 @@ The Prisma schema also introduces attributes. These attributes map the column va
 
 Another important feature is the **Prisma client, which provides an interface for communicating with the database and carrying out queries.**
 
-```ts
+```typescript
 import { PrismaClient } from '@prisma/client'
 
 const prisma = new PrismaClient()
@@ -143,7 +144,7 @@ pnpm prisma init
 
 In the file schema.prisma, we’ll define our model that will be used to generate queries used to create the SQL tables. Let’s create a simple employee model:
 
-```ts
+```typescript
 //schema.prisma
 
 datasource db {
@@ -244,7 +245,7 @@ First, we add a start script in the package.json file.
 
 Next, create an index.ts file in the root directory. Then copy and paste the code below:
 
-```ts
+```typescript
 import express, { Request, Response, Express } from 'express'
 
 const app:Express = express()
@@ -268,7 +269,7 @@ pnpm start
 
 Next, we import the Prisma client, create some employee records, and send them as a response.
 
-```ts
+```typescript
 import express, { Request, Response, Express } from "express";
 import { Employee, PrismaClient } from "@prisma/client";
 
@@ -308,6 +309,144 @@ app.listen(port, (): void => {
 
 ```
 
+## Advance Queries
+### The $queryRaw method
+
+This method allows us to write custom SQL queries. In the code given below, we first import the PrismaClient class from which the $queryRaw method is derived. We then make a simple SELECT SQL query to get all the employee records.
+
+Since these custom SQL queries are simply strings, we can use the JavaScript template literals to add or input dynamic values or variables to our queries.
+
+```ts
+app.get("/", async (req: Request, res: Response) => {
+  try {
+   
+    await prisma.$queryRaw`INSERT INTO "Employee" (email, name) VALUES ('xyz.ranjdom@mail.com', 'XYZ-NAME');`
+
+    let allEmployee = await prisma.$queryRaw`SELECT * FROM "Employee"`
+ 
+
+    res.send({
+      data: allEmployee, 
+      message: "Data fetched successfully"
+      });
+  } catch (e) {
+    console.log((e as Error).message);
+    res.status(501).send({
+      message: (e as Error).message, 
+      data: null})
+  }
+});
+```
+
+### The query method
+The query method is provided by TypeORM repositories. With this method, we can write custom queries for a whole table, as shown below:
+
+```ts
+import { HttpStatus, Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import Record from 'src/entities/record';
+import { IResponse } from 'src/global';
+import { Repository } from 'typeorm';
+
+
+@Injectable()
+export class RecordService {
+  constructor(
+    @InjectRepository(Record) private _recordRepo: Repository<Record>,
+  ) {}
+
+  async getClassRank(): Promise<IResponse<Record[]>> {
+    try {
+      //query
+
+      let foundClassRank = await this._recordRepo.query(`
+            SELECT "studentId", "class", score as avs
+            FROM record`);
+
+      return {
+        data: foundClassRank,
+        status: true,
+        statusCode: HttpStatus.OK,
+        message: 'Class ranks successfully fetched',
+      };
+    } catch (e) {
+      return {
+        message: (e as Error).message,
+        status: false,
+        statusCode: HttpStatus.NOT_IMPLEMENTED,
+      };
+    }
+  }
+}
+```
+
+### The Raw method
+
+The Raw method is imported from the typeorm library and allows us to write custom SQL queries on a particular table column. This appears similar to the query method. A slight difference, however, is that the Raw method works on the columns of the table on which the repository is defined, while query can take a full query on the table.
+
+In the example below, we’re querying the Wallet table for records that were created between a date range. Using these methods and the JavaScript template literal discussed earlier, we can easily use SQL query strings directly and insert dynamic variables as well.
+
+```ts
+import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import * as moment from 'moment';
+import { EWallet, Wallet } from 'src/entities/Wallet';
+import { IRes } from 'src/interfaces/global';
+import { Raw, Repository } from 'typeorm';
+ 
+ 
+ export const EQueryLength = {
+  WEEK: [7, 'd'],
+  YEAR: [365, 'd'],
+  MONTH: [30, 'd'],
+}
+
+ @Injectable()
+export class TurboCartService {
+  constructor(
+    @InjectRepository(Wallet) private WalletRepo: Repository<Wallet>,
+) {}
+
+async getTotalPayout(): Promise<IRes<number>> {
+    try {
+
+      let start = moment().subtract(...EQueryLength[query]); // last 7/30 days
+
+      let end = moment().add(1, 'd');
+
+//      console.log(end.toDate(), start.toDate());
+
+      let getVendorWallets: Wallet[] = await this.WalletRepo.find({
+        where: {
+          isPaid: true,
+          wallet_type: EWallet.VENDOR,
+          createdAt: Raw((alias) => `${alias} >= :start AND ${alias} < :end`, {
+            end: new Date(end.toDate()),
+            start: new Date(start.toDate()),
+          }),
+        },
+      });
+
+      // let getVendorWallets = await getConnection().createQueryBuilder().select("wallet").from(Wallet, "wallet").where('wallet.createdAt BETWEEN :start AND :end', { start: tomorrow.toString(), end : today.toString()}).getMany()
+
+      console.log(getVendorWallets);
+ 
+
+      return {
+        message: 'Successfully fetched all payout(s)',
+        status: true,
+        data: total_balance,
+      };
+    } catch (e) {
+      return {
+        status: false,
+        message: (e as Error).message,
+      };
+    }
+  }
+}
+```
+
 ## Relationship
 
 ### One-to-one
@@ -316,7 +455,7 @@ A one-to-one relationship occurs when an entity is mapped to another entity uniq
 
 In Prisma, we can achieve this with the @relation annotation. First, in the schema.prisma file, we define the model for fingerprints and humans as shown below. The model should include their unique IDs and other relevant information.
 
-```ts
+```typescript
 
 // This is your Prisma schema file,
  
@@ -344,7 +483,7 @@ Next, we use the @relation annotation to define the one-to-one relationship that
 
 We can then update our schema, as seen below:
 
-```ts
+```typescript
 // This is your Prisma schema file,
 // ...
 
@@ -372,7 +511,7 @@ One-to-many relationships are achieved in SQL by including the primary key of on
 
 In Prisma, this is easily done, as shown below:
 
-```ts
+```typescript
 // This is your Prisma schema file,
 // ...
 model Employee {
@@ -421,7 +560,7 @@ In Prisma, this is achieved using a join table (also known as a pivot or link ta
 
 Let’s create a Student and Course model, as shown below:
 
-```ts
+```typescript
 // ...
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
@@ -465,6 +604,58 @@ Create
 First, we create the company using sample data and then get the id of the created company. 
 
 
+## Running a build for Prisma
+
+Running a build is simply building the entire code to a set of executable files. This also includes compiling TypeScript to JavaScript. A common method of running a build is to compile all the TypeScript files to a JavaScript file and designate a single entry point for the app.
+
+First, we’ll need to update the tsconfig.json file at the root directory of our Prisma application. We’ll add the outDir key, which specifies the path and directory name of the compiled JavaScript code.
+
+An example is shown below on line 11:
+
+```json
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "declaration": true,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "es2016",
+    "sourceMap": true,
+    "outDir": "./my-build-folder-name",
+    "baseUrl": "./",
+    "incremental": true,
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
+  }
+}
+```
+
+We can then run the command below to compile our TypeScript code to JavaScript:
+
+```bash
+tsc --project ./
+```
+
+#### Running a build for TypeORM
+
+In TypeORM, we can easily run a build by running the script npm run build. This will create a dist folder, which is a compilation of our TypeScript files. We can then run the app with npm start or npm run start:debug to enable the debugger tool.
+CI/CD
+
+Git cloud services such as GitHub and Bitbucket are at the heart of developing robust CI/CD pipelines.
+
+A basic CI/CD pipeline consists of three stages:
+
+- [x] Development: The code or software is developed.
+
+- [x] Integration: Cloud services, such as GitHub via git, manage different versions and patches of the uploaded code or software.
+    Deployment/delivery: Webhooks from other cloud services are triggered to build the code if there are any changes. Also, at this stage, there may be another pipeline or scripts that can test the new code and ensure that there are no bugs or code breaks before they’re built on the server.
+
+To achieve such a complex pipeline, other cloud services such as CircleCI, AWS, Azure, or Google Cloud Platform are integrated to manage several layers of this pipeline and ensure the whole process is fast and efficient.
+
 ---
 
 
@@ -478,6 +669,8 @@ While carrying out a read query for a related table or schema, what Prisma keywo
 `Answer`
 includes
 
-`CRUD operation Ref.To:` [prisma-ed](./prisma-ed/README.md)
+`CRUD operation Ref.To:` 
+[prisma-ex-company-ed](./prisma-ex-company-ed/README.md)
+[prisma-ex-flightbooking-ed](./prisma-ex-flightbooking-ed/README.md)
 
 
