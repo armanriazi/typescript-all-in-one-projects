@@ -1,4 +1,4 @@
-import * as ErrorHelper from "./globals.d";
+import * as ErrorHelper from "./globals";
   //-------------***---------//
   // Code: Example usage of ErrorHelper
 // Define some response messages to test ErrorHelper
