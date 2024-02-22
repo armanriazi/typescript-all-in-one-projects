@@ -1,0 +1,17 @@
+// ...
+
+  RetrieveLambda:
+    Type: AWS::Serverless::Function
+    Properties:
+      MemorySize: 512
+      Timeout: 15
+      CodeUri: lambdas/retrieve/dist/retrieve.zip
+      Policies:
+        - AWSLambdaExecute
+      Events:
+        Api:
+          Type: Api
+          Properties:
+            Path: /retrieve
+            Method: GET
+            RestApiId: !Ref ServerlessRestApi
