@@ -1,0 +1,15 @@
+{
+    "version": 2,
+    "public": true,
+    "routes": [
+        { "src": "/(.*)", "dest": "/api/index" }
+    ],
+    "functions": {
+        "api/**/*.ts": {
+            "runtime": "now-deno@0.4.0"
+        }
+    },
+    "env": {
+        "DENO_VERSION": "1.1.2"
+    }
+}
